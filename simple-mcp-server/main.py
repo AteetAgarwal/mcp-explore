@@ -4,27 +4,18 @@ import aiosqlite
 import aiofiles
 from fastmcp import FastMCP
 
-# Default local data dir
-local_data_dir = os.path.join(os.path.dirname(__file__), "data")
-
-# Get MCP_DATA_DIR from env
-DATA_DIR = os.getenv("MCP_DATA_DIR", local_data_dir)
-
-# Check if directory is writable, else fallback to /tmp/mcp_data
-if not os.access(DATA_DIR, os.W_OK):
-    DATA_DIR = "/tmp/mcp_data"
-
+DATA_DIR = os.getenv("MCP_DATA_DIR", "/tmp/mcp_data")  # fallback for local dev
 os.makedirs(DATA_DIR, exist_ok=True)
-
-DB_PATH = os.path.join(DATA_DIR, "expenses.db")
+DB_PATH = os.path.join(DATA_DIR, "expenses1.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "categories.json")
 
 mcp = FastMCP(name="Expense Tracker")
 
 
 async def get_connection():
-    conn = await aiosqlite.connect(DB_PATH)
+    conn = await aiosqlite.connect(DB_PATH, timeout=30)
     await conn.execute("PRAGMA journal_mode=WAL;")
+    await conn.execute("PRAGMA busy_timeout = 30000;") 
     return conn
 
 
