@@ -10,6 +10,9 @@ dependencies = [
     "fastmcp>=2.12.4",
 ]
 
+[requires]
+python = ">=3.13"
+
 [build-system]
 requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
