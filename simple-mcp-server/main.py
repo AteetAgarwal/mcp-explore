@@ -4,8 +4,18 @@ import aiosqlite
 import aiofiles
 from fastmcp import FastMCP
 
-DATA_DIR = os.getenv("MCP_DATA_DIR", os.path.join(os.path.dirname(__file__), "data"))
+# Default local data dir
+local_data_dir = os.path.join(os.path.dirname(__file__), "data")
+
+# Get MCP_DATA_DIR from env
+DATA_DIR = os.getenv("MCP_DATA_DIR", local_data_dir)
+
+# Check if directory is writable, else fallback to /tmp/mcp_data
+if not os.access(DATA_DIR, os.W_OK):
+    DATA_DIR = "/tmp/mcp_data"
+
 os.makedirs(DATA_DIR, exist_ok=True)
+
 DB_PATH = os.path.join(DATA_DIR, "expenses.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "categories.json")
 
