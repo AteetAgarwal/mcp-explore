@@ -5,7 +5,9 @@ import aiosqlite
 import aiofiles
 from fastmcp import FastMCP
 
-DB_PATH = os.path.join(os.getenv("MCP_DATA_DIR", "/tmp"), "expenses.db")
+DATA_DIR = os.getenv("MCP_DATA_DIR", os.path.join(os.path.dirname(__file__), "data"))
+os.makedirs(DATA_DIR, exist_ok=True)
+DB_PATH = os.path.join(DATA_DIR, "expenses.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "categories.json")
 
 mcp = FastMCP(name="Expense Tracker")
@@ -87,11 +89,5 @@ async def categories():
     except FileNotFoundError:
         return json.dumps([])
 
-
-async def main():
-    await init_db()
-    await mcp.run_async(transport="http", host="0.0.0.0", port=8000)
-
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    mcp.run(transport="http", host="0.0.0.0", port=8000)
