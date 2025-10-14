@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "name": "Food & Dining",
+      "subcategories": ["Groceries", "Restaurants", "Cafes", "Fast Food", "Snacks"]
+    },
+    {
+      "name": "Transportation",
+      "subcategories": ["Public Transit", "Fuel", "Car Maintenance", "Ride Sharing", "Parking"]
+    },
+    {
+      "name": "Utilities",
+      "subcategories": ["Electricity", "Water", "Gas", "Internet", "Phone"]
+    },
+    {
+      "name": "Housing",
+      "subcategories": ["Rent", "Mortgage", "Property Taxes", "Home Insurance", "Repairs"]
+    },
+    {
+      "name": "Entertainment",
+      "subcategories": ["Movies", "Concerts", "Streaming Services", "Books", "Hobbies"]
+    },
+    {
+      "name": "Health & Fitness",
+      "subcategories": ["Gym Memberships", "Medical Bills", "Pharmacy", "Wellness Products", "Health Insurance"]
+    },
+    {
+      "name": "Personal Care",
+      "subcategories": ["Haircuts", "Skincare", "Cosmetics", "Spa Treatments", "Clothing"]
+    },
+    {
+      "name": "Education",
+      "subcategories": ["Tuition Fees", "Books & Supplies", "Online Courses", "Workshops", "Student Loans"]
+    },
+    {
+      "name": "Travel",
+      "subcategories": ["Flights", "Accommodation", "Food & Dining Abroad", "Local Transport", "Activities"]
+    },
+    {
+      "name": "Income",
+      "subcategories": ["Salary", "Freelance Work", "Investments", "Rental Income", "Gifts"]
+    }
+  ]
+}
